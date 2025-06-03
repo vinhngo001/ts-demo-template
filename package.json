@@ -6,15 +6,20 @@
    "devDependencies": {
       "@types/node": "^22.13.10",
       "ts-node": "^10.9.2",
+      "ts-node-dev": "^2.0.0",
       "typescript": "^5.8.2"
    },
    "dependencies": {
+      "@types/express": "^5.0.2",
+      "express": "^5.1.0",
+      "mysql2": "^3.14.0",
       "reflect-metadata": "^0.2.2",
-      "typeorm": "0.3.24",
-      "mysql2": "^3.14.0"
+      "typeorm": "0.3.24"
    },
    "scripts": {
       "start": "ts-node src/index.ts",
-      "typeorm": "typeorm-ts-node-commonjs"
+      "typeorm": "typeorm-ts-node-commonjs",
+      "dev": "tsnd ./src/index.ts",
+      "migrate:db": "npx typeorm-ts-node-commonjs migration:revert -d src/data-source.ts"
    }
 }

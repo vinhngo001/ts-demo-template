@@ -1,0 +1,27 @@
+@serverUrl=http://localhost:3001
+
+###
+
+GET {{serverUrl}}/
+Content-Type: application/json
+
+###
+
+GET {{serverUrl}}/users
+Content-Type: application/json
+
+###
+
+GET {{serverUrl}}/users/3
+Content-Type: application/json
+
+###
+
+POST {{serverUrl}}/users
+Content-Type: application/json
+
+{
+    "firstName": "Duong",
+    "lastName": "Victor",
+    "age": 31
+}
