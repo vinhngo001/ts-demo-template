@@ -24,15 +24,14 @@ app.get("/users/:id", async (req: Request, res: Response) => {
 
 app.post("/users", async (req: Request, res: Response) => {
     const dataBody: { firstName: string | null, lastName: string | null, age: number | null } = req.body;
-    // const userRepo = AppDataSource.getRepository(User);
-    // const newUser = await userRepo.create({
-    //     data: dataBody
-    // });
-    const newUser = new User();
-    newUser.firstName = dataBody.firstName;
-    newUser.lastName = dataBody.lastName;
-    newUser.age = dataBody.age;
-    await AppDataSource.manager.save(newUser);
+    const userRepo = AppDataSource.getRepository(User);
+    const newUser = await userRepo.create(dataBody);
+    await userRepo.save(newUser);
+    // const newUser = new User();
+    // newUser.firstName = dataBody.firstName;
+    // newUser.lastName = dataBody.lastName;
+    // newUser.age = dataBody.age;
+    // await AppDataSource.manager.save(newUser);
     res.json({ sucess: true, message: "Sucess", data: newUser })
     // const newUser = new User();
 });
